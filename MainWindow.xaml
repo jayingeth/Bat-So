@@ -1,0 +1,173 @@
+﻿<Window x:Class="BatSo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" AllowsTransparency="True"
+        Height="650" MinHeight="650" Width="1200" MinWidth="1200"
+        ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged"
+        Closed="Window_Closed"
+>
+    <Grid>
+        <!--Title and body layout-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--Title-->
+        <Border Background="#1f7ed0" MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+                <TextBlock Text="LẤY SỐ" Foreground="#ffffff" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35 0 0 0"/>
+                <Icon:PackIconMaterial Kind="Message" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="13 3 0 6" Foreground="#ff9d00"/>
+                <Icon:PackIconMaterial Kind="Message" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 7 0 0" Foreground="#ffffff"/>
+            </Grid>
+        </Border>
+
+        <!--Window control buttons-->
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Background="Transparent" BorderThickness="0" Width="30" Height="30" Click="MinimizeButton_Click">
+                <Icon:PackIconMaterial Kind="WindowMinimize" Foreground="White" Width="12" Height="12" />
+            </Button>
+            <Button Background="Transparent" BorderThickness="0" Width="30" Height="30" Click="MaximizeButton_Click">
+                <Icon:PackIconMaterial Kind="WindowMaximize" Foreground="White" Width="12" Height="12" />
+            </Button>
+            <Button Background="Transparent" BorderThickness="0" Width="30" Height="30" Click="CloseButton_Click">
+                <Icon:PackIconMaterial Kind="WindowClose" Foreground="White" Width="12" Height="12" />
+            </Button>
+        </StackPanel>
+
+        <!--Body layout-->
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Background.jpg" Stretch="UniformToFill" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0">
+                <Image x:Name="LogoBV" Source="/Images/logoBVMat.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="110" Width="110"/>
+            </Border>
+
+            <StackPanel Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="TenBenhVien" FontSize="42" FontWeight="Bold" Background="White" Foreground="Navy" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    BỆNH VIỆN CHUYÊN KHOA MẮT VĨNH LONG
+                </TextBlock>
+                <TextBlock x:Name="TenHeThong" FontSize="36" FontWeight="Bold" Background="White" Foreground="Navy" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    HỆ THỐNG LẤY SỐ TỰ ĐỘNG
+                </TextBlock>
+            </StackPanel>
+
+            <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button x:Name="focusButton" Grid.Row="0" Grid.Column="2" Style="{StaticResource focusButton}" Margin="0 10 10 0" Click="focusButton_Click">
+                    <Icon:PackIconMaterial x:Name="focusIcon" Kind="ImageFilterCenterFocus" Width="25" Height="25"/>
+                </Button>
+            </Border>
+
+            <!--Phần hiển thị số thứ tự-->
+            <Border Grid.Row="1" Grid.Column="1" Background="#ffffff" CornerRadius="10" Padding="10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" ShadowDepth="5" Direction="-130" Opacity="0.5" />
+                </Border.Effect>
+                <Grid x:Name="PrintContent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Border>
+                        <TextBlock Text="BỆNH VIỆN CHUYÊN KHOA MẮT" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+
+                    <Border Grid.Row="1">
+                        <TextBlock x:Name="NgayGioHienTai" Text="01/01/2023 23:59:59" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    
+                    <Border Grid.Row="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="80" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock x:Name="SoThuTu" Text="0" FontSize="128" FontWeight="Bold" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0 0 0 15"/>
+                            </StackPanel>
+
+                            <Border Grid.Row="0" Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="50"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Border>
+                                        <TextBlock x:Name="ThongTinThe" Text="Hạn thẻ: 01/01/2024" FontSize="24" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    </Border>
+
+                                    <Border Grid.Row="1">
+                                        <TextBlock x:Name="textUuTien" Text="" FontSize="32" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    </Border>
+                                </Grid>
+                                
+                            </Border>
+
+                            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border>
+                                        <TextBlock x:Name="TenBenhNhan" Text="Họ tên: Nguyễn Văn A" FontSize="32" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    </Border>
+
+                                    <Border Grid.Row="1">
+                                        <TextBlock x:Name="SoThe" Text="Số thẻ: DN4860000000000" FontSize="24" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="3">
+                        <TextBlock Text="XIN CHỜ QUẦY TIẾP NHẬN GỌI SỐ" FontSize="28" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!--Phần textbox ẩn để quét mã QR-->
+            <Border Grid.Row="2" Grid.Column="1">
+                <TextBox x:Name="textBox" Height="30" KeyDown="textBox_KeyDown" GotFocus="textBox_GotFocus" LostFocus="textBox_LostFocus"></TextBox>
+            </Border>
+
+            <!--Footer-->
+            <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="#1f7ed0">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" ShadowDepth="5" Direction="-130" Opacity="0.5" />
+                </Border.Effect>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#ffffff">
+                    SẢN PHẨM CỦA VNPT VĨNH LONG
+                </TextBlock>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

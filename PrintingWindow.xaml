@@ -1,0 +1,84 @@
+﻿<Window x:Class="BatSo.PrintingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BatSo"
+        mc:Ignorable="d" Height="150" Width="250"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Loaded="Window_Loaded"
+>
+    <Border x:Name="PrintArea" Background="White" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18"/>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="18"/>
+            </Grid.RowDefinitions>
+
+            <Border>
+                <TextBlock Text="BỆNH VIỆN CHUYÊN KHOA MẮT VĨNH LONG" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+
+            <Border Grid.Row="1">
+                <TextBlock x:Name="NgayGiohienTai" Text="01/01/2023 23:59:59" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+
+            <Border Grid.Row="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="14"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Border>
+                                <TextBlock x:Name="SoThuTu" Text="0" FontSize="64" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0 0 0 10"/>
+                            </Border>
+
+                            <Border Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border>
+                                        <TextBlock x:Name="ThongTinThe" Text="Hạn thẻ: 01/01/2023 - Thông tin thẻ chính xác" TextWrapping="Wrap" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </Border>
+
+                                    <Border Grid.Row="1">
+                                        <TextBlock x:Name="UuTien" Text="ƯU TIÊN" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.ColumnSpan="2">
+                        <TextBlock x:Name="TenBenhNhan" Text="Họ tên: Nguyễn Văn A" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <Border Grid.Row="2" Grid.ColumnSpan="2">
+                        <TextBlock x:Name="SoThe" Text="Số thẻ: 1234567890" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="3">
+                <TextBlock Text="XIN CHỜ QUẦY TIẾP NHẬN GỌI SỐ" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+        </Grid>
+    </Border>
+</Window>
